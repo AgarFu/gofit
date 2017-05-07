@@ -1,1 +1,9 @@
 language: go
+
+before_install:
+  - go get -v github.com/golang/lint/golint
+  - go get -u github.com/kyoh86/richgo
+
+script:
+  - golint -set_exit_status .
+  - richgo test -cover
