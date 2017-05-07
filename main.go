@@ -45,13 +45,13 @@ func main() {
 
   Init(ioutil.Discard, os.Stdout, os.Stdout, os.Stderr)
 
-  listeningPort, err := strconv.Atoi(getenv("GO_TEST_PORT", defaultListeningPort))
+  listeningPort, err := strconv.Atoi(getenv("GOFIT_PORT", defaultListeningPort))
   if err != nil {
     fmt.Println(err)
     os.Exit(1)
   }
 
-  fmt.Println("PORT:", listeningPort)
+  fmt.Println("Listening port:", listeningPort)
   http.HandleFunc("/", handler)
   http.ListenAndServe(fmt.Sprintf(":%d", listeningPort), nil)
 }
